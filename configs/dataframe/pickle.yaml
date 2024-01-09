@@ -1,0 +1,5 @@
+_target_: src.dataframe.dataframe.PickleDataFrameLoader
+
+dataset_dir: ${paths.data_dir}
+file_name: ${data_filename} 
+

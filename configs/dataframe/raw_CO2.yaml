@@ -1,0 +1,10 @@
+_target_: src.dataframe.dataframe.CSVDataFrameLoader
+
+dataset_dir: ${paths.data_dir}/CO2
+names: ['time_idx', '저압보일러: 급수유랑','반응기1온도: 입구','반응기1온도: 출구','HE1온도: 입구', '반응기2온도: 입구', '반응기2온도: 출구', '콘덴서: 압력', '콘덴서: 레벨', '콘덴서: 급수유량', '유입량: 순수유입량', 'AcidGas: 유량','AcidGas: 압력', 'AcidGas: 온도', 'COR(촉매반응): 1차 Air',
+           'COR(촉매반응): 2차 Air','COR(촉매반응): Air 압력','COR(촉매반응): COG 유량','COR(촉매반응): 상부온도','COR(촉매반응): 중부온도', 'COR(촉매반응): 하부온도', '탈황고압보일러: 출구온도', '탈황고압보일러: 스팀유량', '탈황고압보일러: 압력', '탈황고압보일러: 급수유량', 
+           '탈황고압보일러: 레벨', 'PG Heat 온도: 1출구', 'TailGas: 유량', 'TailGas: 온도', 'DrainTank: 레벨', 'DrainTank: 온도','저장Tank: 온도', 'DesuperHeat: 압력', 'DesuperHeat: 레벨', 'TailGas분석기: H2S', 'TailGas분석기: SO2' ]
+sep: ","
+drop_names: []
+
+timestamp_name: 'time_idx'

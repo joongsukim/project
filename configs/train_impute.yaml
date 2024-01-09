@@ -1,0 +1,48 @@
+# @package _global_
+
+# specify here default configuration
+# order of defaults determines the order in which configs override each other
+defaults:
+  - _self_
+  - dataframe: raw_CO2.yaml 
+  - datamodule: CO2_impute_datamodule.yaml
+  - model: brits_impute.yaml
+  #- callbacks: default.yaml
+  - logger: tensorboard.yaml # set logger here or use command line (e.g. `python train.py logger=tensorboard`)
+  - trainer: default.yaml
+  - paths: default.yaml
+  - extras: default.yaml
+  - hydra: default.yaml
+
+  # experiment configs allow for version control of specific hyperparameters
+  # e.g. best hyperparameters for given model and datamodule
+  - experiment: null
+
+  # config for hyperparameter optimization
+  - hparams_search: null
+
+  # optional local config for machine/user specific settings
+  # it's optional since it doesn't need to exist and is excluded from version control
+  - optional local: default.yaml
+
+  # debugging config (enable through command line, e.g. `python train.py debug=default)
+  - debug: null
+
+data_filename: "co2_processed.csv"
+
+save_num: 1 
+save_file_name: ${data_filename}@${model.n_steps}_${model.rnn_hidden_size}_${model.learning_rate}_${model.epochs}.pkl 
+save_path: ${dataframe.dataset_dir}/processed/${save_file_name} 
+
+# task name, determines output directory path
+task_name: "CO2_impute"
+
+# tags to help you identify your experiments
+# you can overwrite this in experiment configs
+# overwrite from command line with `python train.py tags="[first_tag, second_tag]"`
+# appending lists from command line is currently not supported :(
+# https://github.com/facebookresearch/hydra/issues/1547
+tags: ["dev"]
+
+# seed for random number generators in pytorch, numpy and python.random
+seed: null

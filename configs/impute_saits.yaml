@@ -1,0 +1,65 @@
+defaults:
+  - _self_
+  - logger: tensorboard.yaml # set logger here or use command line (e.g. `python train.py logger=tensorboard`)
+  - trainer: default.yaml
+  - paths: default.yaml
+  - extras: default.yaml
+  - hydra: default.yaml
+
+  # experiment configs allow for version control of specific hyperparameters
+  # e.g. best hyperparameters for given model and datamodule
+  - experiment: null
+
+  # config for hyperparameter optimization
+  - hparams_search: null # lstm_optuna.yaml
+
+  # optional local config for machine/user specific settings
+  # it's optional since it doesn't need to exist and is excluded from version control
+  - optional local: default.yaml
+
+  # debugging config (enable through command line, e.g. `python train.py debug=default)
+  - debug: null
+
+# task name, determines output directory path
+task_name: "impute_saits"
+  #
+  ## tags to help you identify your experiments
+  ## you can overwrite this in experiment configs
+  ## overwrite from command line with `python train.py tags="[first_tag, second_tag]"`
+## appending lists from command line is currently not supported :(
+## https://github.com/facebookresearch/hydra/issues/1547
+tags: ["dev"]
+
+# seed for random number generators in pytorch, numpy and python.random
+seed: 1557
+
+
+# impute saits
+
+# SAITS parameters
+n_layers: 2
+d_model: 256
+d_inner: 128
+n_head: 4
+d_k: 64
+d_v: 64
+dropout: 0.1
+diagonal_attention_mask: True
+ORT_weight: 1
+MIT_weight: 1
+learning_rate: 1e-4
+epochs: 100
+patience: 5
+batch_size: 32
+weight_decay: 1e-5
+#device=None,
+
+# Data parameters
+window_size: 60
+stride: 60
+#train_idx_list: null
+#val_idx_list: null
+
+# Data Input/Output
+data_file_path: "C:\\Users\\monet\\PycharmProjects\\posco-project-final-github\\data\\CO2_final\\missing\\missing_data.pkl"
+out_file_dir: ${paths.output_dir}

@@ -1,0 +1,9 @@
+_target_: src.forecast.datamodule.ptf_NOx.PTFNOxDataModule
+
+
+context_length: 32
+horizon_length: 8
+batch_size: 128
+train_ratio: 0.6
+val_ratio: 0.2
+test_ratio: 0.2

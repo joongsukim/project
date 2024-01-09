@@ -1,0 +1,9 @@
+_target_: src.identification.datamodule.new_CO2_nonratio.CO2IdentificationDataModule
+
+alpha: 0.9
+stride: 1
+context_length: 10
+prediction_horizon: 10
+batch_size: 32
+num_workers: 0
+scaler: standard

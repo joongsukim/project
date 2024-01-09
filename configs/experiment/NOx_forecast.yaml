@@ -1,0 +1,42 @@
+# @package _global_
+
+# to execute this experiment run:
+# python train.py experiment=example
+
+defaults:
+  - override /dataframe: NOx.yaml 
+  - override /datamodule: NOx_forecast_datamodule.yaml
+  - override /model: forecast_ptf_lstm.yaml
+  - override /callbacks: default.yaml
+  - override /trainer: default.yaml
+  - override /logger: tensorboard.yaml
+
+
+# all parameters below will be merged with parameters from default configurations set above
+# this allows you to overwrite only specified parameters
+
+tags: ["NOx", "LSTM"]
+
+seed: 12345
+
+task_name: "NOx_forecast_train"
+
+trainer:
+  min_epochs: 1
+  max_epochs: 100
+  gradient_clip_val: 0.1
+
+datamodule:
+  forecast_horizon: 1 
+  context_length: 32 
+  batch_size: 32 
+
+model:
+  cell_type: "LSTM"
+  hidden_size: 64 
+  rnn_layers: 1 
+  dropout: 0.0 
+  learning_rate: 0.001 
+  weight_decay: 0.0 
+  optimizer: "ranger"
+  loss: "rmse" 

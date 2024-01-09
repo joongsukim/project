@@ -1,0 +1,21 @@
+_target_: src.identification.model.module.IdentificationModel
+
+optimizer:
+  _target_: torch.optim.Adam
+  _partial_: true
+  lr: 0.001
+  weight_decay: 0.0
+
+scheduler: null
+
+net:
+  _target_: src.identification.model.net.lstm.LSTMSeq2Seq
+  _partial_: true
+  # encoder_input_dim
+  hidden_dim: 32
+  # decoder_input_dim:
+  # decoder_output_dim:
+  n_layers: 2
+  dropout: 0.2
+
+teacher_forcing_ratio: 1.0

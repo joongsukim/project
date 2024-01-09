@@ -1,0 +1,5 @@
+_target_: src.identification.datamodule.stock.StockIdentificationDataModule
+
+context_length: 7
+prediction_horizon: 2
+batch_size: 128

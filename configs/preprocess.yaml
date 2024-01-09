@@ -1,0 +1,37 @@
+# @package _global_
+
+# specify here default configuration
+# order of defaults determines the order in which configs override each other
+defaults:
+  - _self_
+  - dataframe: raw_CO2.yaml 
+  - corrupt: exponential_corrupter.yaml 
+  - paths: default.yaml
+  - extras: default.yaml
+  - hydra: default.yaml
+
+  # optional local config for machine/user specific settings
+  # it's optional since it doesn't need to exist and is excluded from version control
+  - optional local: default.yaml
+
+  # debugging config (enable through command line, e.g. `python train.py debug=default)
+  - debug: null
+
+target_columns: ['TailGas분석기: H2S', 'TailGas분석기: SO2']
+
+save_num: 1 
+save_file_name: CO2_${corrupt.exp_scale}_${corrupt.duty_cycle}_${corrupt.corrupt_rate}_${save_num}.pkl 
+save_path: ${dataframe.dataset_dir}/processed/${save_file_name} 
+
+# task name, determines output directory path
+task_name: "CO2_preprocess"
+
+# tags to help you identify your experiments
+# you can overwrite this in experiment configs
+# overwrite from command line with `python train.py tags="[first_tag, second_tag]"`
+# appending lists from command line is currently not supported :(
+# https://github.com/facebookresearch/hydra/issues/1547
+tags: ["dev"]
+
+# seed for random number generators in pytorch, numpy and python.random
+seed: null 

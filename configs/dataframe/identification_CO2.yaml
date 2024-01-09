@@ -1,0 +1,5 @@
+_target_: src.dataframe.dataframe.PickleDataFrameLoader
+
+train_dir: ${paths.data_dir}/CO2/smooth03/train
+val_dir: ${paths.data_dir}/CO2/smooth03/val
+test_dir: ${paths.data_dir}/CO2/smooth03/test

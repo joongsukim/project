@@ -1,0 +1,6 @@
+_target_: src.identification.datamodule.CO2.CO2IdentificationDataModule
+
+context_length: 30
+prediction_horizon: 5
+batch_size: 128
+num_workers: 0

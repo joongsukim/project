@@ -1,0 +1,8 @@
+_target_: src.identification.datamodule.NOx.NOxDataModule
+
+context_length: 32
+prediction_horizon: 8
+batch_size: 128
+train_ratio: 0.6
+val_ratio: 0.2
+test_ratio: 0.2

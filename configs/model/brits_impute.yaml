@@ -1,0 +1,10 @@
+_target_: src.models.impute_model.BRITSImputer 
+
+n_steps: ${datamodule.n_steps}
+#n_features: 
+rnn_hidden_size: 16
+learning_rate: 0.0005
+epochs: 50
+patience: 10
+batch_size: ${datamodule.batch_size}
+weight_decay: 1e-5

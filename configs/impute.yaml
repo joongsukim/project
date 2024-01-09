@@ -1,0 +1,33 @@
+defaults:
+  - _self_
+  - logger: tensorboard.yaml # set logger here or use command line (e.g. `python train.py logger=tensorboard`)
+  - paths: default.yaml
+  - extras: default.yaml
+  - hydra: default.yaml
+
+task_name: "impute"
+seed: 1557
+
+#n_steps
+#n_features
+n_layers: 2
+d_model: 256
+d_inner: 128
+n_head: 4
+d_k: 64
+d_v: 64
+dropout: 0.1
+diagonal_attention_mask: True
+ORT_weight: 1
+MIT_weight: 1
+learning_rate: 1e-3,
+epochs: 100
+patience: 10
+batch_size: 32
+weight_decay: 1e-5
+#device=None
+stride: 1
+
+data_file_path: C:\\Users\\monet\\PycharmProjects\\posco-project-final-github\\data\\CO2_final\\missing\\missing_data.pkl
+out_file_dir: ./data/
+
